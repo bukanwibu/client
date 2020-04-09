@@ -6,8 +6,12 @@
       mode="horizontal"
       @select="handleSelect"
     >
-      <el-menu-item index="1">Awesome Project</el-menu-item>
-      <el-menu-item index="2">Pricing</el-menu-item>
+      <el-menu-item index="1">
+        <nuxt-link to="/" class="link">Awesome Project</nuxt-link>
+      </el-menu-item>
+      <el-menu-item index="2">
+        <nuxt-link to="/pricing" class="link">Pricing</nuxt-link>
+      </el-menu-item>
       <el-menu-item index="3">Login</el-menu-item>
     </el-menu>
     <nuxt />
@@ -25,5 +29,9 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
+  }
+
+  .link {
+    text-decoration: none;
   }
 </style>
