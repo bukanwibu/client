@@ -11,7 +11,10 @@
     />
 
     <textarea v-model="result" />
-    {{ percentage }}%
+			<div v-if="status !== ''">
+				{{ status }}
+				{{ percentage }}%
+			</div>
   </el-container>
 </template>
 
@@ -23,7 +26,8 @@
       return {
         isProcessing: false,
         result: "",
-        percentage: "0"
+        percentage: 0,
+				status: ''
       };
     },
     methods: {
@@ -38,7 +42,12 @@
         if (m.status === "recognizing text") {
           const result = (m.progress / MAX_PERCENTAGE) * 100;
           this.percentage = result.toFixed(DECIMAL_COUNT);
+					this.status = 'Recognizing Text'
         }
+				if(m.status === 'loading tesseract core' || m.status === 'initializing api') {
+					this.status = 'Initializing API'
+				}
+
       },
       async recognize(file) {
         const worker = createWorker({
@@ -59,6 +68,7 @@
 
         this.result = text;
         this.isProcessing = false;
+				this.status = ''
       }
     }
   };
