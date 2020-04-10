@@ -16,7 +16,8 @@
       </el-form-item>
     </el-form>
 
-    New user? <nuxt-link to="/register">create one</nuxt-link>
+    New user? <nuxt-link to="/register">create one</nuxt-link> Forgot password?
+    <nuxt-link to="/forgot-password">Forgot password</nuxt-link>
   </div>
 </template>
 
