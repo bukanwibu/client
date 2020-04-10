@@ -1,6 +1,7 @@
 <template>
   <el-container>
     <el-header>Welcome page</el-header>
+
     <input
       type="file"
       :name="'document'"
@@ -10,11 +11,16 @@
       class="input-file"
     />
 
-    <textarea v-model="result" />
-			<div v-if="status !== ''">
-				{{ status }}
-				{{ percentage }}%
-			</div>
+    <div v-if="status !== ''">
+      {{ status }} {{ percentage }}%
+    </div>
+    <el-input
+      type="textarea"
+      :autosize="{ minRows: 3}"
+      placeholder="Result"
+      v-model="result"
+      v-if="result != ''"
+    />
   </el-container>
 </template>
 
@@ -27,7 +33,7 @@
         isProcessing: false,
         result: "",
         percentage: 0,
-				status: ''
+        status: ""
       };
     },
     methods: {
@@ -42,12 +48,14 @@
         if (m.status === "recognizing text") {
           const result = (m.progress / MAX_PERCENTAGE) * 100;
           this.percentage = result.toFixed(DECIMAL_COUNT);
-					this.status = 'Recognizing Text'
+          this.status = "Recognizing Text";
         }
-				if(m.status === 'loading tesseract core' || m.status === 'initializing api') {
-					this.status = 'Initializing API'
-				}
-
+        if (
+          m.status === "loading tesseract core" ||
+          m.status === "initializing api"
+        ) {
+          this.status = "Initializing API";
+        }
       },
       async recognize(file) {
         const worker = createWorker({
@@ -68,10 +76,8 @@
 
         this.result = text;
         this.isProcessing = false;
-				this.status = ''
+        this.status = "";
       }
     }
   };
 </script>
-
-<style></style>
