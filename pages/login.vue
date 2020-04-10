@@ -15,6 +15,8 @@
         <el-button type="primary" @click="handleSubmit">Login</el-button>
       </el-form-item>
     </el-form>
+
+    New user? <nuxt-link to="/register">create one</nuxt-link>
   </div>
 </template>
 
