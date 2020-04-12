@@ -1,23 +1,38 @@
 <template>
-  <div>
-    <el-form label-width="120px">
-      <el-form-item label="Email">
-        <el-input placeholder="Please input" v-model="email" type="email" />
-      </el-form-item>
-      <el-form-item label="Password">
-        <el-input
-          placeholder="Please input password"
-          v-model="password"
-          show-password
-        />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="handleSubmit">Login</el-button>
-      </el-form-item>
-    </el-form>
-
-    New user? <nuxt-link to="/register">create one</nuxt-link> Forgot password?
-    <nuxt-link to="/forgot-password">Forgot password</nuxt-link>
+  <div class="cotainer">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Login</div>
+          <div class="card-body">
+            <div class="form-group">
+              <label>E-Mail Address</label>
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Your email address"
+                v-model="email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Your password"
+                v-model="password"
+              />
+            </div>
+            <button @click="handleSubmit" class="btn btn-block btn-primary">
+              Login
+            </button>
+            <nuxt-link to="/forgot-password" class="btn btn-link"
+              >Forgot password</nuxt-link
+            >
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

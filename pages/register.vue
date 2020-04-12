@@ -1,23 +1,44 @@
 <template>
-  <div>
-    <el-form label-width="120px">
-      <el-form-item label="Name">
-        <el-input placeholder="Please input" v-model="name" type="text" />
-      </el-form-item>
-      <el-form-item label="Email">
-        <el-input placeholder="Please input" v-model="email" type="email" />
-      </el-form-item>
-      <el-form-item label="Password">
-        <el-input
-          placeholder="Please input password"
-          v-model="password"
-          show-password
-        />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="handleSubmit">Register</el-button>
-      </el-form-item>
-    </el-form>
+  <div class="cotainer">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Register</div>
+          <div class="card-body">
+            <div class="form-group">
+              <label>Name</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Your name"
+                v-model="name"
+              />
+            </div>
+            <div class="form-group">
+              <label>E-Mail Address</label>
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Your email address"
+                v-model="email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Your password"
+                v-model="password"
+              />
+            </div>
+            <button @click="handleSubmit" class="btn btn-block btn-primary">
+              Register
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
