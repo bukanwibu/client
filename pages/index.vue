@@ -1,31 +1,52 @@
 <template>
   <div class="container">
-    <el-header>Welcome page</el-header>
-
-    <input
-      type="file"
-      :name="'document'"
-      :disabled="isProcessing"
-      @change="filesChange($event.target.files);"
-      accept="image/*"
-      class="input-file"
-    />
-
-    <div v-if="status !== ''">
-      {{ status }} {{ percentage }}%
+    <div class="col-md-12">
+      <div class="text-center" v-if="status !== ''">
+        <h3>{{ status }}</h3>
+        <div class="progress">
+          <div
+            class="progress-bar"
+            role="progressbar"
+            :style="{width: percentage + '%'}"
+            :aria-valuenow="percentage"
+            :aria-valuemin="0"
+            :aria-valuemax="100"
+          >
+            {{ percentage }}%
+          </div>
+        </div>
+      </div>
     </div>
-    <el-input
-      type="textarea"
-      :autosize="{ minRows: 3}"
-      placeholder="Result"
-      v-model="result"
-      v-if="result != ''"
-    />
+    <div class="col-md-12 mt-4">
+      <div class="row">
+        <div class="col-md-12">
+          <input
+            type="file"
+            :name="'document'"
+            :disabled="isProcessing"
+            @change="filesChange($event.target.files);"
+            accept="image/*"
+            class="input-file form-control"
+          />
+        </div>
+        <div class="col-md-12 mt-4" v-if="result != ''">
+          <textarea-autosize
+            class="form-control"
+            v-model="result"
+            :min-height="50"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+  import Vue from "vue";
   import { createWorker, PSM, OEM } from "tesseract.js";
+  import TextareaAutosize from "vue-textarea-autosize";
+
+  Vue.use(TextareaAutosize);
 
   export default {
     data() {
