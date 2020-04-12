@@ -17,38 +17,42 @@
       <ul class="navbar-nav mr-auto"></ul>
       <form class="form-inline my-2 my-lg-0">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <nuxt-link
-              class="nav-link"
-              to="/login"
-              :class="{ 'active': this.$route.path === '/login' }"
-              >Login</nuxt-link
-            >
-          </li>
-          <li class="nav-item">
-            <nuxt-link
-              class="nav-link"
-              to="/register"
-              :class="{ 'active': this.$route.path === '/register' }"
-              >Register</nuxt-link
-            >
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              John Doe
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Logout</a>
-            </div>
-          </li>
+          <template v-if="!isLoggedIn">
+            <li class="nav-item">
+              <nuxt-link
+                class="nav-link"
+                to="/login"
+                :class="{ 'active': this.$route.path === '/login' }"
+                >Login</nuxt-link
+              >
+            </li>
+            <li class="nav-item">
+              <nuxt-link
+                class="nav-link"
+                to="/register"
+                :class="{ 'active': this.$route.path === '/register' }"
+                >Register</nuxt-link
+              >
+            </li>
+          </template>
+          <template v-else>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                {{ this.$store.state.auth.user.email }}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Logout</a>
+              </div>
+            </li>
+          </template>
         </ul>
       </form>
     </div>
@@ -56,5 +60,11 @@
 </template>
 
 <script>
-  export default {};
+  export default {
+    computed: {
+      isLoggedIn() {
+        return this.$store.state.auth.isLoggedIn;
+      }
+    }
+  };
 </script>

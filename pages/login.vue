@@ -2,6 +2,9 @@
   <div class="cotainer">
     <div class="row justify-content-center">
       <div class="col-md-6">
+        <div class="alert alert-danger" role="alert" v-if="isError">
+          {{ errorMessage }}
+        </div>
         <div class="card">
           <div class="card-header">Login</div>
           <div class="card-body">
@@ -42,24 +45,35 @@
     data() {
       return {
         email: "",
-        password: ""
+        password: "",
+        errorMessage: "",
+        isError: false
       };
     },
     methods: {
       handleSubmit() {
-        const BASE_URL = "http://localhost:4000/users/login";
-
+        const ENDPOINT = `${process.env.SERVER_URL}/users/login`;
         axios
-          .post(BASE_URL, {
+          .post(ENDPOINT, {
             identity: this.email,
             password: this.password
           })
           .then(res => {
             if (res.statusText == "OK") {
-              console.log("redirect to /home set mutation");
+              this.$store.commit("auth/SET_AUTHENTICATE", res.data);
+              this.$router.push({ path: "/" });
             }
           })
-          .catch(e => console.log(e));
+          .catch(e => {
+            this.isError = true;
+            this.errorMessage = "Whops. Look's like something went wrong";
+            this.identity = "";
+            this.password = "";
+
+            setTimeout(() => {
+              this.isError = false;
+            }, 5000);
+          });
       }
     }
   };

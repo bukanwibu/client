@@ -52,6 +52,7 @@
 
 <script>
   import Vue from "vue";
+  import { mapMutations } from "vuex";
   import { createWorker, PSM, OEM } from "tesseract.js";
   import TextareaAutosize from "vue-textarea-autosize";
 
