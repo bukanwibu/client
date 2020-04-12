@@ -59,7 +59,13 @@ export default {
     "@nuxtjs/axios",
     "@nuxtjs/pwa",
     // Doc: https://github.com/nuxt-community/dotenv-module
-    "@nuxtjs/dotenv"
+    "@nuxtjs/dotenv",
+    [
+      "nuxt-vuex-localstorage",
+      {
+        sessionStorage: ["auth"] //  If not entered, “localStorage” is the default value
+      }
+    ]
   ],
   /*
    ** Axios module configuration
