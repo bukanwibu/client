@@ -11,9 +11,20 @@
         <nuxt-link to="/login" class="link">Login</nuxt-link>
       </el-menu-item>
     </el-menu>
+    <Navbar />
     <nuxt />
   </div>
 </template>
+
+<script>
+  import Navbar from "@/components/Navbar";
+
+  export default {
+    components: {
+      Navbar
+    }
+  };
+</script>
 
 <style>
   html {
