@@ -15,6 +15,7 @@
                 class="form-control"
                 placeholder="Your email address"
                 v-model="email"
+                required
               />
             </div>
             <div class="form-group">
@@ -24,6 +25,7 @@
                 class="form-control"
                 placeholder="Your password"
                 v-model="password"
+                required
               />
             </div>
             <button @click="handleSubmit" class="btn btn-block btn-primary">

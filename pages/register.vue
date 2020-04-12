@@ -2,6 +2,9 @@
   <div class="cotainer">
     <div class="row justify-content-center">
       <div class="col-md-6">
+        <div class="alert alert-danger" role="alert" v-if="isError">
+          {{ errorMessage }}
+        </div>
         <div class="card">
           <div class="card-header">Register</div>
           <div class="card-body">
@@ -12,6 +15,8 @@
                 class="form-control"
                 placeholder="Your name"
                 v-model="name"
+                min="5"
+                required
               />
             </div>
             <div class="form-group">
@@ -21,6 +26,7 @@
                 class="form-control"
                 placeholder="Your email address"
                 v-model="email"
+                required
               />
             </div>
             <div class="form-group">
@@ -30,6 +36,7 @@
                 class="form-control"
                 placeholder="Your password"
                 v-model="password"
+                required
               />
             </div>
             <button @click="handleSubmit" class="btn btn-block btn-primary">
@@ -49,28 +56,36 @@
       return {
         name: "",
         email: "",
-        password: ""
+        password: "",
+        errorMessage: "",
+        isError: false
       };
     },
     methods: {
       handleSubmit() {
-        const BASE_URL = "http://localhost:4000/users/register";
+        const ENDPOINT = `${process.env.SERVER_URL}/users/register`;
         axios
-          .post(BASE_URL, {
+          .post(ENDPOINT, {
             name: this.name,
             email: this.email,
             password: this.password
           })
           .then(res => {
             if (res.statusText == "Created") {
-              console.log("success and redirect to login or force to home");
-
+              alert("Success, your data has been registered.");
               this.name = "";
               this.email = "";
               this.password = "";
+              this.$router.push({ path: "/login" });
             }
           })
-          .catch(e => console.log(e));
+          .catch(e => {
+            this.isError = true;
+            this.errorMessage = "Whops. Look's like something went wrong";
+            setTimeout(() => {
+              this.isError = false;
+            }, 5000);
+          });
       }
     }
   };

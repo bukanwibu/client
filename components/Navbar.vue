@@ -49,7 +49,7 @@
                 {{ this.$store.state.auth.user.email }}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" @click="logout">Logout</a>
               </div>
             </li>
           </template>
@@ -64,6 +64,13 @@
     computed: {
       isLoggedIn() {
         return this.$store.state.auth.isLoggedIn;
+      }
+    },
+    methods: {
+      logout() {
+        if (confirm("Do you really want to logout?")) {
+          this.$store.commit("auth/LOGOUT");
+        }
       }
     }
   };
