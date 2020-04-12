@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <nuxt-link class="navbar-brand" to="/">ReadPict</nuxt-link>
     <button
       class="navbar-toggler"

@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <div class="container">
     <el-header>Welcome page</el-header>
 
     <input
@@ -21,7 +21,7 @@
       v-model="result"
       v-if="result != ''"
     />
-  </el-container>
+  </div>
 </template>
 
 <script>
