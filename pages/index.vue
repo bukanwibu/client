@@ -8,9 +8,6 @@
             class="progress-bar"
             role="progressbar"
             :style="{width: percentage + '%'}"
-            :aria-valuenow="percentage"
-            :aria-valuemin="0"
-            :aria-valuemax="100"
           >
             {{ percentage }}%
           </div>
@@ -21,6 +18,7 @@
       <div class="row">
         <div class="col-md-12">
           <input
+            ref="fileUpload"
             type="file"
             :name="'document'"
             :disabled="isProcessing"
@@ -35,6 +33,7 @@
             v-model="result"
             :min-height="50"
           />
+						<button class="btn btn-danger mt-3" @click="reset">Clear</button>
         </div>
       </div>
     </div>
@@ -60,8 +59,13 @@
     methods: {
       filesChange(fileList) {
         if (!fileList.length) return;
-
         this.recognize(fileList[0]);
+      },
+      reset() {
+        this.$refs.fileUpload.value = "";
+        this.status = "";
+        this.percentage = 0;
+        this.result = "";
       },
       updateProgress(m) {
         let MAX_PERCENTAGE = 1;
@@ -69,7 +73,7 @@
         if (m.status === "recognizing text") {
           const result = (m.progress / MAX_PERCENTAGE) * 100;
           this.percentage = result.toFixed(DECIMAL_COUNT);
-          this.status = "Recognizing Text";
+          this.status = "Recognizing Text...";
         }
         if (
           m.status === "loading tesseract core" ||
