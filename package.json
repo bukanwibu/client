@@ -15,7 +15,6 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "element-ui": "^2.4.11",
     "filepond": "^4.13.1",
     "filepond-plugin-image-preview": "^4.6.1",
     "nuxt": "^2.0.0",
