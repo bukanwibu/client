@@ -2,9 +2,17 @@
   <div class="cotainer">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <div class="alert alert-danger" role="alert" v-if="isError">
-          {{ errorMessage }}
-        </div>
+        <Error v-if="isError">
+          <template v-slot:header>
+            Error
+          </template>
+          <template v-slot:body>
+            <ul>
+              <li v-for="e in errors">{{ e }}</li>
+            </ul>
+          </template>
+        </Error>
+
         <div class="card">
           <div class="card-header">Login</div>
           <div class="card-body">
@@ -43,12 +51,17 @@
 
 <script>
   import axios from "axios";
+  import Error from "~/components/Error";
+
   export default {
+    components: {
+      Error
+    },
     data() {
       return {
         email: "",
         password: "",
-        errorMessage: "",
+        errors: [],
         isError: false
       };
     },
@@ -68,7 +81,7 @@
           })
           .catch(e => {
             this.isError = true;
-            this.errorMessage = "Whops. Look's like something went wrong";
+            this.errors = e.response.data.error;
             this.identity = "";
             this.password = "";
 
