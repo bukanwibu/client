@@ -38,7 +38,7 @@
       this.$axios
         .get(ENDPOINT, {
           headers: {
-            Authorization: "Bearer " + this.$store.state.auth.token
+            token: this.$store.state.auth.token
           }
         })
         .then(res => {
