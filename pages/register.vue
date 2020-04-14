@@ -57,7 +57,6 @@
 </template>
 
 <script>
-  import axios from "axios";
   import Error from "~/components/Error";
 
   export default {
@@ -76,7 +75,7 @@
     methods: {
       handleSubmit() {
         const ENDPOINT = `${process.env.SERVER_URL}/users/register`;
-        axios
+        this.$axios
           .post(ENDPOINT, {
             name: this.name,
             email: this.email,

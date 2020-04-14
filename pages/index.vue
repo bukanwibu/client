@@ -44,6 +44,13 @@
             :min-height="50"
           />
           <button class="btn btn-danger mt-3" @click="reset">Clear</button>
+          <button
+            class="btn btn-primary mt-3 ml-1"
+            @click="save"
+            v-if="this.$store.state.auth.isLoggedIn"
+          >
+            💾 Save
+          </button>
         </div>
       </div>
     </div>
@@ -113,6 +120,25 @@
         this.result = text;
         this.isProcessing = false;
         this.status = "";
+      },
+      save() {
+        const ENDPOINT = `${process.env.SERVER_URL}/texts`;
+        this.$axios
+          .post(
+            ENDPOINT,
+            { data: this.result },
+            {
+              headers: {
+                Authorization: "Bearer " + this.$store.state.auth.token
+              }
+            }
+          )
+          .then(res => {
+            if (res.statusText == "OK") {
+              this.$router.push({ path: "/histories" });
+            }
+          })
+          .catch(e => console.log(e));
       }
     }
   };
