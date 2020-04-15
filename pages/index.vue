@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <section class="jumbotron text-center">
-      <div class="container">
+    <section class="jumbotron text-center" id="intro">
+      <div class="container" >
         <h1>ReadPict</h1>
-        <p class="lead text-muted">
+        <p class="lead text-muted" >
           We present an online OCR (Optical Character Recognition) service to
           extract text from image. Upload photo to our image to text converter,
           click on convert and get your text file instantly.
@@ -123,7 +123,7 @@
       },
       save() {
         const ENDPOINT = `${process.env.SERVER_URL}/texts`;
-        this.$axios
+	this.$axios
           .post(
             ENDPOINT,
             { data: this.result },
@@ -147,7 +147,7 @@
     padding-top: 3rem;
     padding-bottom: 3rem;
     margin-bottom: 0;
-    background-color: #fff;
+    background-color: #ffff;
   }
   @media (min-width: 768px) {
     .jumbotron {
@@ -155,14 +155,18 @@
       padding-bottom: 6rem;
     }
   }
-
   .jumbotron p:last-child {
     margin-bottom: 0;
   }
 
   .jumbotron h1 {
     font-weight: 300;
+    font-color: #ffffff;
   }
+  
+  .jumbotron p {
+    color: #ffff;
+   }
 
   .jumbotron .container {
     max-width: 40rem;

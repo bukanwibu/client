@@ -1,5 +1,5 @@
 <template>
-  <div class="cotainer">
+  <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
         <Error v-if="isError">
@@ -46,7 +46,7 @@
                 required
               />
             </div>
-            <button @click="handleSubmit" class="btn btn-block btn-primary">
+            <button @click="handleSubmit" class="btn btn-primary">
               Register
             </button>
           </div>

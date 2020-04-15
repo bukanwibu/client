@@ -1,5 +1,5 @@
 <template>
-  <div class="cotainer">
+  <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
         <Error v-if="isError">
@@ -36,12 +36,15 @@
                 required
               />
             </div>
-            <button @click="handleSubmit" class="btn btn-block btn-primary">
+            <button @click="handleSubmit" class="btn btn-primary">
               Login
             </button>
+	    <br/>
+	    <br/>
+	    <div style="display: flex; justify-content:center">
             <nuxt-link to="/forgot-password" class="btn btn-link"
-              >Forgot password</nuxt-link
-            >
+              ><span>Forgot password</span></nuxt-link
+            > </div>
           </div>
         </div>
       </div>
@@ -67,8 +70,8 @@
     },
     methods: {
       handleSubmit() {
-        const ENDPOINT = `${process.env.SERVER_URL}/users/login`;
-        axios
+	const ENDPOINT = `${process.env.SERVER_URL}/users/login`;
+	axios
           .post(ENDPOINT, {
             identity: this.email,
             password: this.password
@@ -93,3 +96,46 @@
     }
   };
 </script>
+
+<style>
+.card {
+    margin-top: 10vh;
+     animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+}
+
+@keyframes fadein {
+    from {
+        background-color:#524764;
+    }
+    to {
+        background-color:white;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+</style>
