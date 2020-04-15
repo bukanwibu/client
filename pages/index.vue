@@ -129,14 +129,12 @@
             { data: this.result },
             {
               headers: {
-                Authorization: "Bearer " + this.$store.state.auth.token
+                token: this.$store.state.auth.token
               }
             }
           )
           .then(res => {
-            if (res.statusText == "OK") {
-              this.$router.push({ path: "/histories" });
-            }
+            this.$router.push({ path: "/histories" });
           })
           .catch(e => console.log(e));
       }

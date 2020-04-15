@@ -2,7 +2,7 @@
   <div class="container">
     <div class="my-3 p-3 bg-white rounded shadow-sm">
       <h6 class="border-bottom border-gray pb-2 mb-0">Histories</h6>
-      <div class="media text-muted pt-3">
+      <div class="media text-muted pt-3" v-for="history in histories">
         <svg
           class="bd-placeholder-img mr-2 rounded"
           width="32"
@@ -33,16 +33,23 @@
 
 <script>
   export default {
+    data() {
+      return {
+        histories: []
+      };
+    },
     mounted() {
       const ENDPOINT = `${process.env.SERVER_URL}/texts`;
       this.$axios
         .get(ENDPOINT, {
           headers: {
-            Authorization: "Bearer " + this.$store.state.auth.token
+            token: this.$store.state.auth.token
           }
         })
         .then(res => {
-          console.log(res);
+          if (res.status == 200) {
+            this.histories = res.data;
+          }
         })
         .catch(e => console.log(e));
     }
