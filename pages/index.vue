@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <section class="jumbotron text-center" id="intro">
-      <div class="container" >
+      <div class="container">
         <h1>ReadPict</h1>
-        <p class="lead text-muted" >
+        <p class="lead text-muted">
           We present an online OCR (Optical Character Recognition) service to
           extract text from image. Upload photo to our image to text converter,
           click on convert and get your text file instantly.
@@ -58,12 +58,8 @@
 </template>
 
 <script>
-  import Vue from "vue";
   import { mapMutations } from "vuex";
   import { createWorker, PSM, OEM } from "tesseract.js";
-  import TextareaAutosize from "vue-textarea-autosize";
-
-  Vue.use(TextareaAutosize);
 
   export default {
     data() {
@@ -123,7 +119,7 @@
       },
       save() {
         const ENDPOINT = `${process.env.SERVER_URL}/texts`;
-	this.$axios
+        this.$axios
           .post(
             ENDPOINT,
             { data: this.result },
@@ -163,10 +159,10 @@
     font-weight: 300;
     font-color: #ffffff;
   }
-  
+
   .jumbotron p {
     color: #ffff;
-   }
+  }
 
   .jumbotron .container {
     max-width: 40rem;

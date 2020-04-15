@@ -1,6 +1,12 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-    <nuxt-link class="navbar-brand" to="/"><img src="../static/icon.png" width='50' height='50' />ReadPict</nuxt-link>
+    <nuxt-link class="navbar-brand" to="/"
+      ><img
+        src="../static/icon.png"
+        width="50"
+        height="50"
+      />ReadPict</nuxt-link
+    >
     <button
       class="navbar-toggler"
       type="button"
@@ -36,6 +42,12 @@
             </li>
           </template>
           <template v-else>
+            <nuxt-link
+              class="nav-link"
+              to="/histories"
+              :class="{ 'active': this.$route.path === '/histories' }"
+              >Histories</nuxt-link
+            >
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
