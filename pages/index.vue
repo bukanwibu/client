@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <section class="jumbotron text-center" id="intro">
-      <div class="container" >
+      <div class="container">
         <h1>ReadPict</h1>
         <p class="lead">
           We present an online OCR (Optical Character Recognition) service to
@@ -15,7 +15,7 @@
         <h3>{{ status }}</h3>
         <div class="progress">
           <div
-            class="progress-bar"
+            class="progress-bar progress-bar-striped progress-bar-animated"
             role="progressbar"
             :style="{width: percentage + '%'}"
           >
@@ -24,9 +24,9 @@
         </div>
       </div>
     </div>
-    <div class="col-md-12 mt-4">
-      <div class="row">
-        <div class="col-md-12" style="background-color:#6B747D">
+    <div class="col-md-12 mt-4" style="display: flex; justify-content: center;">
+      <div class="row" style="display: flex; justify-content: center">
+        <div class="col-md-12">
           <input
             ref="fileUpload"
             type="file"
@@ -35,17 +35,17 @@
             @change="filesChange($event.target.files);"
             accept="image/*"
             class="input-file form-control"
-            style="background-color: #6B747D; border: none"
+            style=""
           />
         </div>
-        <div class="col-md-12 mt-4" v-if="result != ''">
+        <div class="col-md-12 mt-4 mb-4" v-if="result != ''" style="">
           <textarea-autosize
             class="form-control"
             v-model="result"
             :min-height="50"
-            style="background-color: #6B747D"
+            style=""
           />
-          <button class="btn btn-danger mt-3" @click="reset">Clear</button>
+          <button class="btn btn-danger mt-3 mb-2" @click="reset">Clear</button>
           <button
             class="btn btn-primary mt-3 ml-1"
             @click="save"
@@ -60,12 +60,8 @@
 </template>
 
 <script>
-  import Vue from "vue";
   import { mapMutations } from "vuex";
   import { createWorker, PSM, OEM } from "tesseract.js";
-  import TextareaAutosize from "vue-textarea-autosize";
-
-  Vue.use(TextareaAutosize);
 
   export default {
     data() {
@@ -125,7 +121,7 @@
       },
       save() {
         const ENDPOINT = `${process.env.SERVER_URL}/texts`;
-	this.$axios
+        this.$axios
           .post(
             ENDPOINT,
             { data: this.result },
@@ -136,9 +132,7 @@
             }
           )
           .then(res => {
-            if (res.statusText == "OK") {
-              this.$router.push({ path: "/histories" });
-            }
+            this.$router.push({ path: "/histories" });
           })
           .catch(e => console.log(e));
       }
@@ -148,15 +142,16 @@
 
 <style scope>
   .jumbotron {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     margin-bottom: 0;
-    background-color: #6C6ADE;
+    background-color: #ffff;
+    opacity: 0.7;
   }
   @media (min-width: 768px) {
     .jumbotron {
-      padding-top: 6rem;
-      padding-bottom: 6rem;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
     }
   }
   .jumbotron p:last-child {
@@ -166,10 +161,7 @@
   .jumbotron h1 {
     font-weight: 300;
   }
-  
-  .jumbotron p {
-    font-color: #ffff;
-   }
+
 
   .jumbotron .container {
     max-width: 40rem;

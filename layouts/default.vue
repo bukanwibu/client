@@ -16,6 +16,8 @@
 
 <style>
  body {
-  background-color: #6C6ADE;
+  background-image: url('../static/bg.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
  }
 </style>
