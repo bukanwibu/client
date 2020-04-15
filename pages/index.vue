@@ -3,7 +3,7 @@
     <section class="jumbotron text-center" id="intro">
       <div class="container" >
         <h1>ReadPict</h1>
-        <p class="lead text-muted" >
+        <p class="lead">
           We present an online OCR (Optical Character Recognition) service to
           extract text from image. Upload photo to our image to text converter,
           click on convert and get your text file instantly.
@@ -26,7 +26,7 @@
     </div>
     <div class="col-md-12 mt-4">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" style="background-color:#6B747D">
           <input
             ref="fileUpload"
             type="file"
@@ -35,6 +35,7 @@
             @change="filesChange($event.target.files);"
             accept="image/*"
             class="input-file form-control"
+            style="background-color: #6B747D; border: none"
           />
         </div>
         <div class="col-md-12 mt-4" v-if="result != ''">
@@ -42,6 +43,7 @@
             class="form-control"
             v-model="result"
             :min-height="50"
+            style="background-color: #6B747D"
           />
           <button class="btn btn-danger mt-3" @click="reset">Clear</button>
           <button
@@ -149,7 +151,7 @@
     padding-top: 3rem;
     padding-bottom: 3rem;
     margin-bottom: 0;
-    background-color: #ffff;
+    background-color: #6C6ADE;
   }
   @media (min-width: 768px) {
     .jumbotron {
@@ -163,11 +165,10 @@
 
   .jumbotron h1 {
     font-weight: 300;
-    font-color: #ffffff;
   }
   
   .jumbotron p {
-    color: #ffff;
+    font-color: #ffff;
    }
 
   .jumbotron .container {

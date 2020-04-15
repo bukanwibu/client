@@ -13,7 +13,7 @@
           </template>
         </Error>
 
-        <div class="card">
+        <div class="card" style="">
           <div class="card-header">Login</div>
           <div class="card-body">
             <div class="form-group">
@@ -108,10 +108,10 @@
 
 @keyframes fadein {
     from {
-        background-color:#524764;
+        background-color:#6C6ADE;
     }
     to {
-        background-color:white;
+        background-color:#ffff;
     }
 }
 @-moz-keyframes fadein { /* Firefox */
