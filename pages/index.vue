@@ -97,7 +97,6 @@
           $('#blah')
              .attr('src', e.target.result)
         }
-
         reader.readAsDataURL(fileList[0])
       },
       reset() {
@@ -105,6 +104,8 @@
         this.status = "";
         this.percentage = 0;
         this.result = "";
+        $('#blah')
+         .attr('src', 'https://bajorental.com/wp-content/uploads/2018/05/arrow-down-gif.gif')
       },
       updateProgress(m) {
         let MAX_PERCENTAGE = 1;
