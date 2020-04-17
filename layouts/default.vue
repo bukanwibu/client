@@ -1,15 +1,18 @@
 <template>
   <div>
-    <Navbar style="margin-bottom: 20px" />
+    <Navbar style="margin-bottom: 20px;" />
     <nuxt />
+    <Footer />
   </div>
 </template>
 <script>
   import Navbar from "@/components/Navbar";
+  import Footer from "@/components/Footer";
 
   export default {
     components: {
-      Navbar
+      Navbar,
+      Footer
     }
   };
 </script>
