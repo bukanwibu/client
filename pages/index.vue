@@ -12,7 +12,7 @@
       </div>
     </section>
     <div class="" style="background-color:#DBD7D7; opacity:0.9; min-height:550px">
-      <div style="padding-top:5vh; margin-top:2vh; margin-bottom:3vh">
+      <div style="padding-top:10vh; margin-top:2vh; margin-bottom:3vh">
         <h1 style="text-align: center;">Try it yourself ...</h1>
       </div>
       <div class="container" style="display: flex; flex-direction: column;">
@@ -51,7 +51,7 @@
               :min-height="50"
               style="opacity: 0.7;"
             />
-            <div style="margin-bottom: 80px">
+            <div style="margin-bottom: 10vh">
               <button class="btn btn-danger mt-3" @click="reset">Clear</button>
               <button
                 class="btn btn-primary mt-2 ml-1"
