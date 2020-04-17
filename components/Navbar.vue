@@ -80,9 +80,19 @@
     },
     methods: {
       logout() {
-        if (confirm("Do you really want to logout?")) {
-          this.$store.commit("auth/LOGOUT");
-        }
+        this.$swal({
+          title: "Do you really want to logout?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, logout!"
+        }).then(result => {
+          if (result.value) {
+            this.$store.commit("auth/LOGOUT");
+            this.$router.push({ path: "/" });
+          }
+        });
       }
     }
   };

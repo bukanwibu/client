@@ -75,6 +75,7 @@
 
   
   export default {
+    middleware: "auth",
     data() {
       return {
         isProcessing: false,
@@ -82,6 +83,9 @@
         percentage: 0,
         status: ""
       };
+    },
+    mounted() {
+      console.log(this.$store.state.auth.isLoggedIn);
     },
     methods: {
       filesChange(fileList) {

@@ -39,12 +39,13 @@
             <button @click="handleSubmit" class="btn btn-primary">
               Login
             </button>
-	    <br/>
-	    <br/>
-	    <div style="display: flex; justify-content:center">
-            <nuxt-link to="/forgot-password" class="btn btn-link"
-              ><span>Forgot password</span></nuxt-link
-            > </div>
+            <br />
+            <br />
+            <div style="display: flex; justify-content:center">
+              <nuxt-link to="/forgot-password" class="btn btn-link"
+                ><span>Forgot password</span></nuxt-link
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -57,6 +58,7 @@
   import Error from "~/components/Error";
 
   export default {
+    middleware: "guest",
     components: {
       Error
     },
@@ -70,8 +72,8 @@
     },
     methods: {
       handleSubmit() {
-	const ENDPOINT = `${process.env.SERVER_URL}/users/login`;
-	axios
+        const ENDPOINT = `${process.env.SERVER_URL}/users/login`;
+        axios
           .post(ENDPOINT, {
             identity: this.email,
             password: this.password
@@ -98,44 +100,47 @@
 </script>
 
 <style>
-.card {
-    margin-top: 25vh;
-     animation: fadein 2s;
+  .card {
+    margin-top: 10vh;
+    animation: fadein 2s;
     -moz-animation: fadein 2s; /* Firefox */
     -webkit-animation: fadein 2s; /* Safari and Chrome */
     -o-animation: fadein 2s; /* Opera */
-}
+  }
 
-@keyframes fadein {
+  @keyframes fadein {
     from {
-        background-color:#6C6ADE;
+      background-color: #6c6ade;
     }
     to {
-        background-color:#ffff;
+      background-color: #ffff;
     }
-}
-@-moz-keyframes fadein { /* Firefox */
+  }
+  @-moz-keyframes fadein {
+    /* Firefox */
     from {
-        opacity:0;
+      opacity: 0;
     }
     to {
-        opacity:1;
+      opacity: 1;
     }
-}
-@-webkit-keyframes fadein { /* Safari and Chrome */
+  }
+  @-webkit-keyframes fadein {
+    /* Safari and Chrome */
     from {
-        opacity: 0;
+      opacity: 0;
     }
     to {
-        opacity: 1;
+      opacity: 1;
     }
-}
-@-o-keyframes fadein { /* Opera */
+  }
+  @-o-keyframes fadein {
+    /* Opera */
     from {
-        opacity:0;
+      opacity: 0;
     }
     to {
-        opacity: 1;
+      opacity: 1;
     }
-}
+  }
 </style>

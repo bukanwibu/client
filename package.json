@@ -23,6 +23,7 @@
     "regenerator-runtime": "^0.13.5",
     "tesseract.js": "^2.1.1",
     "vue-filepond": "^6.0.2",
+    "vue-sweetalert2": "^3.0.3",
     "vue-textarea-autosize": "^1.1.1"
   },
   "devDependencies": {
