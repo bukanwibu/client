@@ -60,6 +60,7 @@
   import Error from "~/components/Error";
 
   export default {
+    middleware: "guest",
     components: {
       Error
     },

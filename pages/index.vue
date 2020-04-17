@@ -64,6 +64,7 @@
   import { createWorker, PSM, OEM } from "tesseract.js";
 
   export default {
+    middleware: "auth",
     data() {
       return {
         isProcessing: false,
@@ -71,6 +72,9 @@
         percentage: 0,
         status: ""
       };
+    },
+    mounted() {
+      console.log(this.$store.state.auth.isLoggedIn);
     },
     methods: {
       filesChange(fileList) {
@@ -161,7 +165,6 @@
   .jumbotron h1 {
     font-weight: 300;
   }
-
 
   .jumbotron .container {
     max-width: 40rem;

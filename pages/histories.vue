@@ -48,6 +48,7 @@
   import moment from "moment";
 
   export default {
+    middleware: "auth",
     data() {
       return {
         histories: []
