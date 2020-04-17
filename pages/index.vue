@@ -51,7 +51,7 @@
               :min-height="50"
               style="opacity: 0.7;"
             />
-            <div style="bottom: 0">
+            <div style="margin-bottom: 80px">
               <button class="btn btn-danger mt-3" @click="reset">Clear</button>
               <button
                 class="btn btn-primary mt-2 ml-1"

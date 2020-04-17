@@ -2,7 +2,7 @@
   <div>
     <Navbar style="margin-bottom: 20px;" />
     <nuxt />
-    <Footer />
+    <Footer/>
   </div>
 </template>
 <script>
