@@ -101,7 +101,7 @@
 
 <style>
   .card {
-    margin-top: 10vh;
+    margin-top: 20vh;
     animation: fadein 2s;
     -moz-animation: fadein 2s; /* Firefox */
     -webkit-animation: fadein 2s; /* Safari and Chrome */
