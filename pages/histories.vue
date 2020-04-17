@@ -61,22 +61,37 @@
         this.histories[i].isHide = !this.histories[i].isHide;
       },
       remove(i) {
-        if (confirm("Do you really want to logout?")) {
-          const id = this.histories[i]._id;
-          const ENDPOINT = `${process.env.SERVER_URL}/texts/${id}`;
-          this.$axios
-            .delete(ENDPOINT, {
-              headers: {
-                token: this.$store.state.auth.token
-              }
-            })
-            .then(res => {
-              if (res.status == 200) {
-                this.fetchData();
-              }
-            })
-            .catch(e => console.log(e));
-        }
+        this.$swal({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!"
+        }).then(result => {
+          if (result.value) {
+            const id = this.histories[i]._id;
+            const ENDPOINT = `${process.env.SERVER_URL}/texts/${id}`;
+            this.$axios
+              .delete(ENDPOINT, {
+                headers: {
+                  token: this.$store.state.auth.token
+                }
+              })
+              .then(res => {
+                if (res.status == 200) {
+                  this.fetchData();
+                  this.$swal(
+                    "Deleted!",
+                    "Your file has been deleted.",
+                    "success"
+                  );
+                }
+              })
+              .catch(e => console.log(e));
+          }
+        });
       },
       fetchData() {
         this.histories = [];

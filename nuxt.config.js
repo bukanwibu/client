@@ -65,7 +65,8 @@ export default {
       {
         sessionStorage: ["auth"] //  If not entered, “localStorage” is the default value
       }
-    ]
+    ],
+    "vue-sweetalert2/nuxt"
   ],
   /*
    ** Axios module configuration
