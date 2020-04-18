@@ -177,15 +177,16 @@
   #intro {
     padding-top: 4rem;
     padding-bottom: 4rem;
-    margin-bottom: 0;
-    margin-top: 7rem;
+    margin-bottom: 7rem;
   }
+
   @media (min-width: 768px) {
     #intro {
       padding-top: 10rem;
       padding-bottom: 10rem;
     }
   }
+
   #intro p:last-child {
     margin-bottom: 0;
   }
