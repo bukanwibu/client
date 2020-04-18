@@ -14,15 +14,15 @@
         </Error>
 
         <div class="card" style="">
-          <div class="card-header">Forgot Password</div>
+          <div class="card-header">Reset Password</div>
           <div class="card-body">
             <div class="form-group">
-              <label>E-Mail Address</label>
+              <label>Password</label>
               <input
-                type="email"
+                type="password"
                 class="form-control"
-                placeholder="Your email address"
-                v-model="email"
+                placeholder="New Password"
+                v-model="password"
                 required
               />
             </div>
@@ -45,26 +45,31 @@
     },
     data() {
       return {
-        email: "",
-        errors: [],
-        isError: false
+        token: "",
+        password: "",
+        isError: false,
+        errors: []
       };
+    },
+    mounted() {
+      this.token = this.$router.currentRoute.params.id;
     },
     methods: {
       handleSubmit() {
-        this.$axios
-          .post(`${process.env.SERVER_URL}/users/forgot-password`, {
-            email: this.email
-          })
-          .then(res => {})
-          .catch(e => {
-            this.isError = true;
-            this.errors = e.response.data.error;
+        let config = {
+          headers: {
+            token: this.token
+          }
+        };
 
-            setTimeout(() => {
-              this.isError = false;
-            }, 5000);
-          });
+        this.$axios
+          .post(
+            `${process.env.SERVER_URL}/users/update-password`,
+            { password: this.password },
+            config
+          )
+          .then(res => console.log(res))
+          .catch(e => console.log(e));
       }
     }
   };

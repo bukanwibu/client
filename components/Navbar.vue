@@ -1,5 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary" style="width: 100%; position:fixed; top: 0; z-index:2">
+  <nav
+    class="navbar navbar-expand-lg navbar-dark bg-secondary"
+    style="width: 100%; position:fixed; top: 0; z-index:2"
+  >
     <nuxt-link class="navbar-brand" to="/"
       ><img
         src="../static/icon.png"
