@@ -17,8 +17,8 @@
           aria-label="Placeholder: 32x32"
         >
           <title>Placeholder</title>
-          <rect width="100%" height="100%" fill="#007bff" />
-          <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+          <rect width="100%" height="100%" fill="#674EDE" />
+          <text x="50%" y="50%" fill="#674EDE" dy=".3em">32x32</text>
         </svg>
         <p class="media-body pb-3 mb-0 small lh-125">
           <strong class="d-block text-gray-dark"
