@@ -61,11 +61,7 @@
           />
           <div style="margin-bottom: 10vh">
             <button class="btn btn-danger mt-3" @click="reset">Clear</button>
-            <button
-              class="btn btn-primary mt-2 ml-1"
-              @click="save"
-              v-if="this.$store.state.auth.isLoggedIn"
-            >
+            <button class="btn btn-primary mt-3 ml-1" @click="save" v-if="">
               💾 Save
             </button>
           </div>
@@ -149,21 +145,29 @@
         this.status = "";
       },
       save() {
-        const ENDPOINT = `${process.env.SERVER_URL}/texts`;
-        this.$axios
-          .post(
-            ENDPOINT,
-            { data: this.result },
-            {
-              headers: {
-                token: this.$store.state.auth.token
+        if (this.$store.state.auth.isLoggedIn) {
+          const ENDPOINT = `${process.env.SERVER_URL}/texts`;
+          this.$axios
+            .post(
+              ENDPOINT,
+              { data: this.result },
+              {
+                headers: {
+                  token: this.$store.state.auth.token
+                }
               }
-            }
-          )
-          .then(res => {
-            this.$router.push({ path: "/histories" });
-          })
-          .catch(e => console.log(e));
+            )
+            .then(res => {
+              this.$router.push({ path: "/histories" });
+            })
+            .catch(e => console.log(e));
+        } else {
+          this.$swal({
+            icon: "error",
+            title: "Oops...",
+            text: "You should login first🔥"
+          });
+        }
       }
     }
   };
