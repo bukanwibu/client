@@ -68,8 +68,26 @@
             { password: this.password },
             config
           )
-          .then(res => console.log(res))
-          .catch(e => console.log(e));
+          .then(res => {
+            this.password = "";
+            if (res.status == 200) {
+              this.$swal(
+                "Success",
+                "Your password has been reset successfully",
+                "success"
+              );
+              this.$router.push({ path: "/" });
+            }
+          })
+          .catch(e => {
+            this.password = "";
+
+            this.$swal({
+              icon: "error",
+              title: "Oops...",
+              text: "Something went wrong!"
+            });
+          });
       }
     }
   };

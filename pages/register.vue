@@ -83,13 +83,16 @@
             password: this.password
           })
           .then(res => {
-            if (res.statusText == "Created") {
-              alert("Success, your data has been registered.");
-              this.name = "";
-              this.email = "";
-              this.password = "";
-              this.$router.push({ path: "/login" });
-            }
+            this.$swal(
+              "Success",
+              "Your data has been registered succesfully",
+              "success"
+            );
+
+            this.name = "";
+            this.email = "";
+            this.password = "";
+            this.$router.push({ path: "/login" });
           })
           .catch(e => {
             this.isError = true;
