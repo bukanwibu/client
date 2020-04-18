@@ -11,7 +11,7 @@
         </span>
       </div>
     </section>
-    <div style="background-color:#DBD7D7; opacity:0.9; min-height: 1000px">
+    <div style="background-color:#DBD7D7; opacity:0.9; min-height: 650px">
       <div style="padding-top:10vh; margin-top:2vh; margin-bottom:3vh">
         <h1 style="text-align: center;">Try it yourself ...</h1>
       </div>
