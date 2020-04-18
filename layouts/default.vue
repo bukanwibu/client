@@ -2,7 +2,7 @@
   <div>
     <Navbar style="margin-bottom: 20px;" />
     <nuxt />
-    <Footer/>
+    <Footer />
   </div>
 </template>
 <script>
@@ -18,9 +18,11 @@
 </script>
 
 <style>
- body {
-  background-image: url('../static/bg.gif');
-  background-size: cover;
-  background-repeat: no-repeat;
- }
+  body {
+    background-image: url("../static/bg.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 75rem;
+    padding-top: 10rem;
+  }
 </style>

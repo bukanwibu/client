@@ -4,14 +4,14 @@
       <div class="container">
         <h1>ReadPict</h1>
         <br />
-        <p class="lead">
+        <span class="lead" style="background-color: white;">
           We present an online OCR (Optical Character Recognition) <br />
           service to extract text from image. Upload photo to our image <br />
           click on convert and get your text file instantly.
-        </p>
+        </span>
       </div>
     </section>
-    <div style="background-color:#DBD7D7; opacity:0.9; min-height:550px">
+    <div style="background-color:#DBD7D7; opacity:0.9; min-height: 1000px">
       <div style="padding-top:10vh; margin-top:2vh; margin-bottom:3vh">
         <h1 style="text-align: center;">Try it yourself ...</h1>
       </div>
